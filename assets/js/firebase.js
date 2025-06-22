@@ -47,23 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
 onAuthStateChanged(auth, (user) => {
   const authForms = document.getElementById('auth-forms');
   const sessionInfo = document.getElementById('session-info');
+  const startButton = document.getElementById('start-button');
 
   if (user) {
     if (userDisplay) {
       const name = user.displayName || user.email;
-      userDisplay.textContent = `Sesión activa: ${name}`;
+      userDisplay.textContent = `Bienvenid@ ${name}`;
+      if (startButton) startButton.classList.add('hidden');
+      console.log('Usuario autenticado:', user);
     }
-
-    if (authForms) authForms.classList.add('hidden');
-    if (sessionInfo) sessionInfo.classList.remove('hidden');
-
-  } else {
-    if (userDisplay) userDisplay.textContent = 'No hay sesión activa';
-    if (authForms) authForms.classList.remove('hidden');
-    if (sessionInfo) sessionInfo.classList.add('hidden');
   }
 });
-
 
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -73,11 +67,13 @@ onAuthStateChanged(auth, (user) => {
       try {
         const user = await login(email, password);
         alert('Login exitoso: ' + (user.displayName || user.email));
+        window.location.href = 'index.html';
       } catch (err) {
         alert('Error de login: ' + err.message);
       }
     });
   }
+
 
   if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
@@ -88,6 +84,7 @@ onAuthStateChanged(auth, (user) => {
       try {
         const user = await register(name, email, password);
         alert('Registro exitoso: ' + user.displayName);
+        window.location.href = 'index.html';
       } catch (err) {
         alert('Error de registro: ' + err.message);
       }
