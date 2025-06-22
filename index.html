@@ -254,10 +254,10 @@
               ></button>
               <div class="hidden sm:flex">
                 <a
-                  href="javascript:void(0)"
+                  href="/login.html"
                   class="btn-navbar ml-5 px-6 py-3 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
                   role="button"
-                  >Get Started</a
+                  >Empieza ahora</a
                 >
               </div>
             </div>
@@ -345,10 +345,42 @@
         </div>
       </section>
 
+      
       <!-- About section -->
       <section id="about" class="section-area">
         <div class="container">
           <div class="grid grid-cols-1 gap-14 lg:grid-cols-2">
+
+            <div class="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 space-y-8">
+
+      <!-- LOGIN + REGISTER -->
+      <div id="auth-forms">
+        <!-- Registro -->
+        <form id="register-form" class="mb-4">
+          <h2>Registro</h2>
+          <input type="text" name="name" placeholder="Nombre" required />
+          <input type="email" name="email" placeholder="Correo" required />
+          <input type="password" name="password" placeholder="Contraseña" required />
+          <button type="submit">Registrarse</button>
+        </form>
+
+        <!-- Login -->
+        <form id="login-form">
+          <h2>Iniciar Sesión</h2>
+          <input type="email" name="email" placeholder="Correo" required />
+          <input type="password" name="password" placeholder="Contraseña" required />
+          <button type="submit">Iniciar sesión</button>
+        </form>
+      </div>
+
+      <!-- SESIÓN ACTIVA -->
+      <div id="session-info" class="hidden">
+        <p id="user-email"></p>
+        <button id="logout-btn">Cerrar sesión</button>
+      </div>
+
+
+
             <div class="w-full">
               <figure class="scroll-revealed max-w-[480px] mx-auto">
                 <img
@@ -3008,7 +3040,7 @@
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 
-    <script src="/assets/js/main.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
     <script>
       // Scroll Reveal
       const sr = ScrollReveal({
@@ -3064,5 +3096,6 @@
         },
       });
     </script>
+    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>

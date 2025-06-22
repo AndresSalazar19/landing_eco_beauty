@@ -1,4 +1,4 @@
-"use strict";
+import '/assets/js/firebase.js';
 
 // Page loading
 var pageLoading = document.querySelector(".page-loading");
