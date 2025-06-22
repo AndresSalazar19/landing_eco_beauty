@@ -100,6 +100,32 @@
 
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
+      <script type="module">
+      import { register, db } from '/assets/js/firebase.js';
+      import { doc, setDoc } from 'firebase/firestore';
+
+      const registerForm = document.getElementById('register-form');
+
+      registerForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        try {
+          const user = await register(email, password);
+          // Guardar nombre en Firestore
+          await setDoc(doc(db, 'users', user.uid), {
+            name,
+            email
+          });
+          alert('Registro exitoso: ' + name);
+          window.location.href = '/'; // redirige a home
+        } catch (err) {
+          alert('Error de registro: ' + err.message);
+        }
+      });
+    </script>
   <body>
     <!-- Page loading -->
     <div
