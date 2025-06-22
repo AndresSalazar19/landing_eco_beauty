@@ -252,14 +252,27 @@
                 aria-label="Switch theme"
                 data-web-trigger="web-theme"
               ></button>
-              <div class="hidden sm:flex">
-                <a
-                  href="/login.html"
-                  class="btn-navbar ml-5 px-6 py-3 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
-                  role="button"
-                  >Empieza ahora</a
-                >
-              </div>
+       <!-- SESIÓN ACTIVA -->
+        <div id="session-info" class="hidden sm:flex">
+  <p id="user-email" class="font-medium text-lg"></p></div>
+
+  <div id="session-info" class="hidden sm:flex">
+    <p id="user-email" class="font-medium text-lg"></p>
+    <a
+      id="logout-btn"
+      class="btn-navbar ml-5 px-6 py-3 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
+      role="button"
+    >log out</a></div>
+
+<!-- Botón solo si NO hay sesión -->
+<div id="start-button" class="hidden sm:flex">
+  <a
+    href="/login.html"
+    class="btn-navbar ml-5 px-6 py-3 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
+    role="button"
+  >Empieza ahora</a>
+</div>
+
             </div>
           </div>
         </div>
@@ -345,41 +358,14 @@
         </div>
       </section>
 
+<<<<<<< HEAD
       <!-- About section -->
+=======
+     <!-- About section -->
+>>>>>>> andres
       <section id="about" class="section-area">
         <div class="container">
           <div class="grid grid-cols-1 gap-14 lg:grid-cols-2">
-
-            <div class="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 space-y-8">
-
-      <!-- LOGIN + REGISTER -->
-      <div id="auth-forms">
-        <!-- Registro -->
-        <form id="register-form" class="mb-4">
-          <h2>Registro</h2>
-          <input type="text" name="name" placeholder="Nombre" required />
-          <input type="email" name="email" placeholder="Correo" required />
-          <input type="password" name="password" placeholder="Contraseña" required />
-          <button type="submit">Registrarse</button>
-        </form>
-
-        <!-- Login -->
-        <form id="login-form">
-          <h2>Iniciar Sesión</h2>
-          <input type="email" name="email" placeholder="Correo" required />
-          <input type="password" name="password" placeholder="Contraseña" required />
-          <button type="submit">Iniciar sesión</button>
-        </form>
-      </div>
-
-      <!-- SESIÓN ACTIVA -->
-      <div id="session-info" class="hidden">
-        <p id="user-email"></p>
-        <button id="logout-btn">Cerrar sesión</button>
-      </div>
-
-
-
             <div class="w-full">
               <figure class="scroll-revealed max-w-[480px] mx-auto">
                 <img
@@ -392,7 +378,7 @@
           </div>
         </div>
       </section>
-
+      
       <!-- Services section -->
       <section id="services" class="section-area">
         <div class="container">
