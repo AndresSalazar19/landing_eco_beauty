@@ -8,6 +8,7 @@ import {
   signOut,
   updateProfile
 } from 'firebase/auth';
+import { getDatabase, ref, push } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,10 +17,24 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  databaseURL: "https://landing-ecobeauty-default-rtdb.firebaseio.com"
 };
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const database = getDatabase(app);
+
+// Función para guardar opiniones
+export const saveOpinion = async (opinionData) => {
+  try {
+    const opinionesRef = ref(database, 'opiniones');
+    const newOpinionRef = await push(opinionesRef, opinionData);
+    return newOpinionRef.key;
+  } catch (error) {
+    console.error('Error al guardar la opinión:', error);
+    throw error;
+  }
+};
 
 // Registro con nombre
 export const register = async (name, email, password) => {
@@ -102,6 +117,30 @@ onAuthStateChanged(auth, (user) => {
       alert('Sesión cerrada');
       window.location.href="index.html"; 
       if(logoutBtn) logoutBtn.classList.add("hidden");
+    });
+  }
+
+  const opinionForm = document.getElementById('opinionForm');
+  if (opinionForm) {
+    opinionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      try {
+        const opinionData = {
+          nombre: e.target.nombreOpinion.value,
+          email: e.target.emailOpinion.value,
+          telefono: e.target.telefonoOpinion.value,
+          tema: e.target.temaOpinion.value,
+          opinion: e.target.opinionOpinion.value,
+        };
+
+        await saveOpinion(opinionData);
+        alert('¡Gracias por tu opinión! Ha sido guardada exitosamente.');
+        opinionForm.reset();
+      } catch (error) {
+        console.error('Error al enviar la opinión:', error);
+        alert('Hubo un error al guardar tu opinión. Por favor, intenta nuevamente.');
+      }
     });
   }
 });
