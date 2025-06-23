@@ -55,7 +55,12 @@ onAuthStateChanged(auth, (user) => {
       userDisplay.textContent = `Bienvenid@ ${name}`;
       if (startButton) startButton.classList.add('hidden');
       console.log('Usuario autenticado:', user);
+      if (logoutBtn) logoutBtn.classList.remove("hidden");
     }
+  } else {
+    // Ocultar el botón de logout y limpiar el display del usuario
+    if (logoutBtn) logoutBtn.classList.add("hidden");
+    if (userDisplay) userDisplay.textContent = "";
   }
 });
 
@@ -95,6 +100,8 @@ onAuthStateChanged(auth, (user) => {
     logoutBtn.addEventListener('click', async () => {
       await logout();
       alert('Sesión cerrada');
+      window.location.href="index.html"; 
+      if(logoutBtn) logoutBtn.classList.add("hidden");
     });
   }
 });
