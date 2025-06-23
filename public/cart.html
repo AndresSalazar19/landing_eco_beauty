@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Copyright" content="Inazuma" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ranyeh" />
+    <meta name="rating" content="general" />
+    <meta name="language" content="English" />
+    <meta name="application-name" content="Inazuma" />
+    <meta
+      name="description"
+      content="Landing page corporativa de Ecobeauty, marca de maquillaje sostenible."
+    />
+    <meta name="keywords" content="company" />
+    <meta
+      name="twitter:title"
+      content="Inazuma | Tailwind CSS Company Landing Page"
+    />
+    <meta
+      name="twitter:description"
+      content="Tailwind CSS Company Landing Page Template by Ranyeh."
+    />
+    <meta name="twitter:image" content="./assets/img/inazuma-cover.png" />
+    <meta
+      content="Ecobeauty | Innovación en Maquillaje Sostenible"
+      property="og:title"
+    />
+    <meta content="Inazuma" property="og:site_name" />
+    <meta
+      content="Tailwind CSS Company Landing Page Template by Ranyeh."
+      property="og:description"
+    />
+    <meta content="./assets/img/inazuma-cover.png" property="og:image" />
+    <meta content="https://ranyeh24.github.io/inazuma-tailwind" property="og:url" />
+    <meta content="website" property="og:type" />
+
+    <meta name="msapplication-TileColor" content="#3d63dd" />
+    <meta
+      name="msapplication-TileImage"
+      content="./assets/favicon/mstile-144x144.png"
+    />
+    <meta name="theme-color" content="#3d63dd" />
+
+    <!-- Page title -->
+    <title>EcoBeauty | Belleza consciente</title>
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ranyeh24.github.io/inazuma-tailwind" />
+
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="194x194"
+      href="./assets/favicon/favicon-194x194.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest.json" />
+    <link
+      rel="mask-icon"
+      href="./assets/favicon/safari-pinned-tab.svg"
+      color="#3d63dd"
+    />
+
+    <!-- CSS Plugins -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+      <script type="module">
+      import { register, db } from '/assets/js/firebase.js';
+      import { doc, setDoc } from 'firebase/firestore';
+
+      const registerForm = document.getElementById('register-form');
+
+      registerForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        try {
+          const user = await register(email, password);
+          // Guardar nombre en Firestore
+          await setDoc(doc(db, 'users', user.uid), {
+            name,
+            email
+          });
+          alert('Registro exitoso: ' + name);
+          window.location.href = '/'; // redirige a home
+        } catch (err) {
+          alert('Error de registro: ' + err.message);
+        }
+      });
+    </script>
+  <body>
+    <!-- Page loading -->
+    <div
+      class="page-loading fixed top-0 bottom-0 left-0 right-0 z-[99999] flex items-center justify-center bg-primary-light-1 dark:bg-primary-dark-1 opacity-100 visible pointer-events-auto"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      aria-label="Loading..."
+    >
+      <div class="grid-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <header
+      class="ic-navbar absolute left-0 top-0 z-40 flex w-full items-center bg-transparent"
+      role="banner"
+      aria-label="Navigation bar"
+    >
+      <div class="container">
+        <div
+          class="ic-navbar-container relative -mx-5 flex items-center justify-between"
+        >
+          <div class="w-60 lg:w-56 max-w-full px-5">
+            <a
+              href="."
+              class="ic-navbar-logo block w-full py-5 text-primary-color"
+            >
+              <svg
+                class="w-full fill-current"
+                id="NavbarBrand"
+                data-name="NavbarBrand"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 118.11"
+              >
+                <path
+                  d="M272.26,29.77h14.86V58q0,8.24,1.13,11.44a10,10,0,0,0,3.64,5,10.44,10.44,0,0,0,6.18,1.77,10.75,10.75,0,0,0,6.23-1.75,10.26,10.26,0,0,0,3.81-5.14q.92-2.52.91-10.82V29.77h14.7V54.59q0,15.33-2.42,21a23,23,0,0,1-8.72,10.58q-5.76,3.68-14.64,3.68-9.65,0-15.59-4.3a22.79,22.79,0,0,1-8.37-12q-1.73-5.32-1.72-19.37Z"
+                />
+                <path
+                  d="M338.36,29.77h14.69V36.5a25.29,25.29,0,0,1,8.38-6.19,24.53,24.53,0,0,1,10.05-2A18.63,18.63,0,0,1,381.39,31a19.46,19.46,0,0,1,7.11,7.86A23.64,23.64,0,0,1,397.09,31a23.34,23.34,0,0,1,11.12-2.69,20.65,20.65,0,0,1,11,2.9A16.79,16.79,0,0,1,426,38.76q2.08,4.68,2.08,15.24V88.34h-14.8V58.62q0-9.94-2.48-13.48t-7.43-3.52a11.22,11.22,0,0,0-6.75,2.15,12.66,12.66,0,0,0-4.44,5.95q-1.45,3.8-1.46,12.19V88.34h-14.8V60q0-7.86-1.16-11.38a10.27,10.27,0,0,0-3.48-5.25,9.15,9.15,0,0,0-5.61-1.72A11,11,0,0,0,359,43.8a13,13,0,0,0-4.48,6.1q-1.49,3.93-1.49,12.38V88.34H338.36Z"
+                />
+                <path
+                  d="M485.31,29.77H500V88.34H485.31V82.15A29,29,0,0,1,476.68,88a24.24,24.24,0,0,1-9.39,1.8q-11.34,0-19.62-8.8t-8.28-21.88q0-13.56,8-22.23a25.55,25.55,0,0,1,19.47-8.66,24.72,24.72,0,0,1,9.89,2,27.17,27.17,0,0,1,8.55,6ZM469.86,41.83a14.85,14.85,0,0,0-11.32,4.82A17.33,17.33,0,0,0,454,59a17.55,17.55,0,0,0,4.59,12.49,14.85,14.85,0,0,0,11.29,4.9,15.15,15.15,0,0,0,11.48-4.82Q486,66.76,486,59q0-7.65-4.56-12.38A15.31,15.31,0,0,0,469.86,41.83Z"
+                />
+                <path
+                  d="M28,29.77h14.7v6a35.37,35.37,0,0,1,9-5.87,22.09,22.09,0,0,1,8.31-1.64,20.09,20.09,0,0,1,14.78,6.08Q80,39.51,80,49.64v38.7H65.45V62.69q0-10.48-.94-13.92a9.57,9.57,0,0,0-3.27-5.25,9.18,9.18,0,0,0-5.78-1.8,10.82,10.82,0,0,0-7.65,3A16,16,0,0,0,43.38,53q-.65,2.74-.64,11.88v23.5H28Z"
+                />
+                <path
+                  d="M137.42,29.77h14.69V88.34H137.42V82.15A29,29,0,0,1,128.79,88a24.19,24.19,0,0,1-9.38,1.8q-11.34,0-19.63-8.8T91.5,59.16q0-13.56,8-22.23A25.53,25.53,0,0,1,119,28.27a24.69,24.69,0,0,1,9.89,2,27.17,27.17,0,0,1,8.55,6ZM122,41.83a14.87,14.87,0,0,0-11.32,4.82A17.37,17.37,0,0,0,106.15,59a17.54,17.54,0,0,0,4.58,12.49A14.85,14.85,0,0,0,122,76.39a15.12,15.12,0,0,0,11.48-4.82q4.56-4.81,4.56-12.62,0-7.65-4.56-12.38A15.3,15.3,0,0,0,122,41.83Z"
+                />
+                <rect y="29.77" width="14.69" height="58.56" />
+                <polygon
+                  points="226.39 62.27 232.8 68.67 282.23 118.11 163.48 89.2 196.84 55.84 190.43 49.44 140.99 0 259.75 28.91 226.39 62.27"
+                  id="NavbarBrandIcon"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="flex w-full items-center justify-between px-5">
+            <div>
+              <button
+                type="button"
+                class="ic-navbar-toggler absolute right-4 top-1/2 block -translate-y-1/2 rounded-md px-3 py-[6px] text-[22px]/none text-primary-color ring-primary focus:ring-2 lg:hidden"
+                data-web-toggle="navbar-collapse"
+                data-web-target="navbarMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation menu"
+              >
+                <i class="lni lni-menu"></i>
+              </button>
+
+              <nav
+                id="navbarMenu"
+                class="ic-navbar-collapse absolute right-4 top-[80px] w-full max-w-[250px] rounded-lg hidden bg-primary-light-1 py-5 shadow-lg dark:bg-primary-dark-1 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6"
+              >
+              </nav>
+            </div>
+            <div class="flex items-center justify-end pr-[52px] lg:pr-0">
+              <button
+                type="button"
+                class="inline-flex items-center text-primary-color text-[24px]/none"
+                aria-label="Switch theme"
+                data-web-trigger="web-theme"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main relative">
+<section
+  id="home"
+  class="relative overflow-hidden bg-primary text-primary-color pt-[120px] md:pt-[130px] lg:pt-[160px]"
+>
+  <div class="container">
+    <div class="-mx-5 flex flex-wrap items-center">
+      <div class="w-full px-5">
+        <div class="scroll-revealed mx-auto max-w-[780px] text-center">
+          <h1
+            class="mb-6 text-3xl font-bold leading-snug text-primary-color sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-tight"
+          >
+            Registrarse en EcoBeauty
+          </h1>
+
+          <p
+            class="mx-auto mb-9 max-w-[600px] text-base text-primary-color sm:text-lg sm:leading-normal"
+          >
+            Accede con tu cuenta para ver productos, promociones y novedades personalizadas.
+          </p>
+
+          <div class="shopping-cart">
+  <!-- Title -->
+  <div class="title">
+    Shopping Bag
+  </div>
+ 
+  <!-- Product #1 -->
+  <div class="item">
+    <div class="buttons">
+      <span class="delete-btn"></span>
+      <span class="like-btn"></span>
+    </div>
+ 
+    <div class="image">
+      <img src="item-1.png" alt="" />
+    </div>
+ 
+    <div class="description">
+      <span>Common Projects</span>
+      <span>Bball High</span>
+      <span>White</span>
+    </div>
+ 
+    <div class="quantity">
+      <button class="plus-btn" type="button" name="button">
+        <img src="plus.svg" alt="" />
+      </button>
+      <input type="text" name="name" value="1">
+      <button class="minus-btn" type="button" name="button">
+        <img src="minus.svg" alt="" />
+      </button>
+    </div>
+ 
+    <div class="total-price">$549</div>
+  </div>
+ 
+  <!-- Product #2 -->
+  <div class="item">
+    <div class="buttons">
+      <span class="delete-btn"></span>
+      <span class="like-btn"></span>
+    </div>
+ 
+    <div class="image">
+      <img src="item-2.png" alt="" />
+    </div>
+ 
+    <div class="description">
+      <span>Maison Margiela</span>
+      <span>Future Sneakers</span>
+      <span>White</span>
+    </div>
+ 
+    <div class="quantity">
+      <button class="plus-btn" type="button" name="button">
+        <img src="plus.svg" alt="" />
+      </button>
+      <input type="text" name="name" value="1">
+      <button class="minus-btn" type="button" name="button">
+        <img src="minus.svg" alt="" />
+      </button>
+    </div>
+ 
+    <div class="total-price">$870</div>
+  </div>
+ 
+  <!-- Product #3 -->
+  <div class="item">
+    <div class="buttons">
+      <span class="delete-btn"></span>
+      <span class="like-btn"></span>
+    </div>
+ 
+    <div class="image">
+      <img src="item-3.png" alt="" />
+    </div>
+ 
+    <div class="description">
+      <span>Our Legacy</span>
+      <span>Brushed Scarf</span>
+      <span>Brown</span>
+    </div>
+ 
+    <div class="quantity">
+      <button class="plus-btn" type="button" name="button">
+        <img src="plus.svg" alt="" />
+      </button>
+      <input type="text" name="name" value="1">
+      <button class="minus-btn" type="button" name="button">
+        <img src="minus.svg" alt="" />
+      </button>
+    </div>
+ 
+    <div class="total-price">$349</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+   
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark-2 text-white">
+      <div class="container py-20 lg:py-[100px]">
+        <div class="row">
+          <div class="col-12 order-first lg:col-4">
+            <div class="w-full">
+              <a href="." class="inline-block mb-5">
+                <svg
+                  id="FooterBrand"
+                  class="h-[40px]"
+                  data-name="FooterBrand"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 500 118.11"
+                >
+                  <path
+                    d="M272.26,29.77h14.86V58q0,8.24,1.13,11.44a10,10,0,0,0,3.64,5,10.44,10.44,0,0,0,6.18,1.77,10.75,10.75,0,0,0,6.23-1.75,10.26,10.26,0,0,0,3.81-5.14q.92-2.52.91-10.82V29.77h14.7V54.59q0,15.33-2.42,21a23,23,0,0,1-8.72,10.58q-5.76,3.68-14.64,3.68-9.65,0-15.59-4.3a22.79,22.79,0,0,1-8.37-12q-1.73-5.32-1.72-19.37Z"
+                    style="fill: #eeeef0"
+                  />
+                  <path
+                    d="M338.36,29.77h14.69V36.5a25.29,25.29,0,0,1,8.38-6.19,24.53,24.53,0,0,1,10.05-2A18.63,18.63,0,0,1,381.39,31a19.46,19.46,0,0,1,7.11,7.86A23.64,23.64,0,0,1,397.09,31a23.34,23.34,0,0,1,11.12-2.69,20.65,20.65,0,0,1,11,2.9A16.79,16.79,0,0,1,426,38.76q2.08,4.68,2.08,15.24V88.34h-14.8V58.62q0-9.94-2.48-13.48t-7.43-3.52a11.22,11.22,0,0,0-6.75,2.15,12.66,12.66,0,0,0-4.44,5.95q-1.45,3.8-1.46,12.19V88.34h-14.8V60q0-7.86-1.16-11.38a10.27,10.27,0,0,0-3.48-5.25,9.15,9.15,0,0,0-5.61-1.72A11,11,0,0,0,359,43.8a13,13,0,0,0-4.48,6.1q-1.49,3.93-1.49,12.38V88.34H338.36Z"
+                    style="fill: #eeeef0"
+                  />
+                  <path
+                    d="M485.31,29.77H500V88.34H485.31V82.15A29,29,0,0,1,476.68,88a24.24,24.24,0,0,1-9.39,1.8q-11.34,0-19.62-8.8t-8.28-21.88q0-13.56,8-22.23a25.55,25.55,0,0,1,19.47-8.66,24.72,24.72,0,0,1,9.89,2,27.17,27.17,0,0,1,8.55,6ZM469.86,41.83a14.85,14.85,0,0,0-11.32,4.82A17.33,17.33,0,0,0,454,59a17.55,17.55,0,0,0,4.59,12.49,14.85,14.85,0,0,0,11.29,4.9,15.15,15.15,0,0,0,11.48-4.82Q486,66.76,486,59q0-7.65-4.56-12.38A15.31,15.31,0,0,0,469.86,41.83Z"
+                    style="fill: #eeeef0"
+                  />
+                  <path
+                    d="M28,29.77h14.7v6a35.37,35.37,0,0,1,9-5.87,22.09,22.09,0,0,1,8.31-1.64,20.09,20.09,0,0,1,14.78,6.08Q80,39.51,80,49.64v38.7H65.45V62.69q0-10.48-.94-13.92a9.57,9.57,0,0,0-3.27-5.25,9.18,9.18,0,0,0-5.78-1.8,10.82,10.82,0,0,0-7.65,3A16,16,0,0,0,43.38,53q-.65,2.74-.64,11.88v23.5H28Z"
+                    style="fill: #eeeef0"
+                  />
+                  <path
+                    d="M137.42,29.77h14.69V88.34H137.42V82.15A29,29,0,0,1,128.79,88a24.19,24.19,0,0,1-9.38,1.8q-11.34,0-19.63-8.8T91.5,59.16q0-13.56,8-22.23A25.53,25.53,0,0,1,119,28.27a24.69,24.69,0,0,1,9.89,2,27.17,27.17,0,0,1,8.55,6ZM122,41.83a14.87,14.87,0,0,0-11.32,4.82A17.37,17.37,0,0,0,106.15,59a17.54,17.54,0,0,0,4.58,12.49A14.85,14.85,0,0,0,122,76.39a15.12,15.12,0,0,0,11.48-4.82q4.56-4.81,4.56-12.62,0-7.65-4.56-12.38A15.3,15.3,0,0,0,122,41.83Z"
+                    style="fill: #eeeef0"
+                  />
+                  <rect
+                    y="29.77"
+                    width="14.69"
+                    height="58.56"
+                    style="fill: #eeeef0"
+                  />
+                  <polygon
+                    points="226.39 62.27 232.8 68.67 282.23 118.11 163.48 89.2 196.84 55.84 190.43 49.44 140.99 0 259.75 28.91 226.39 62.27"
+                    style="fill: #3d63dd"
+                  />
+                </svg>
+              </a>
+
+              <p class="mb-8 text-body-dark-11">
+                We create digital experiences for brands and companies by using
+                technology.
+              </p>
+
+              <div class="-mx-3 flex items-center">
+                <a
+                  href="javascript:void(0)"
+                  class="px-3 text-body-dark-11 hover:text-primary text-[22px] leading-none"
+                >
+                  <i class="lni lni-facebook-fill"></i>
+                </a>
+
+                <a
+                  href="javascript:void(0)"
+                  class="px-3 text-body-dark-11 hover:text-primary text-[22px] leading-none"
+                >
+                  <i class="lni lni-twitter-original"></i>
+                </a>
+
+                <a
+                  href="javascript:void(0)"
+                  class="px-3 text-body-dark-11 hover:text-primary text-[22px] leading-none"
+                >
+                  <i class="lni lni-instagram-original"></i>
+                </a>
+
+                <a
+                  href="javascript:void(0)"
+                  class="px-3 text-body-dark-11 hover:text-primary text-[22px] leading-none"
+                >
+                  <i class="lni lni-linkedin-original"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 lg:col-2">
+            <div class="w-full">
+              <h4 class="mb-9 text-lg font-semibold text-inherit">Solutions</h4>
+              <ul>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Marketing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Analytics</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Commerce</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Insights</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6 lg:col-2">
+            <div class="w-full">
+              <h4 class="mb-9 text-lg font-semibold text-inherit">Support</h4>
+              <ul>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Pricing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Documentation</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >Guides</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="mb-3 inline-block text-body-dark-11 hover:text-primary"
+                    >API Status</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 -order-3 lg:col-4 lg:order-1">
+            <div class="w-full">
+              <h4 class="mb-9 text-lg font-semibold text-inherit">Subscribe</h4>
+
+              <p class="text-body-dark-11">
+                Subscribe to our newsletter for the latest updates
+              </p>
+
+              <form action="#" method="POST" target="_blank" class="mt-8 flex">
+                <input
+                  type="email"
+                  name="email"
+                  class="inline-block flex-grow px-5 py-3 rounded-md rounded-e-none border border-solid border-alpha-dark text-inherit text-base focus:border-primary"
+                  placeholder="Email address"
+                  required
+                />
+
+                <button
+                  type="submit"
+                  class="inline-block py-3 w-[50px] rounded-md rounded-s-none text-center text-lg/none bg-primary text-primary-color hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 focus:bg-primary-light-10 dark:focus:bg-primary-dark-10"
+                >
+                  <i class="lni lni-envelope"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full border-t border-solid border-alpha-dark"></div>
+      <div class="container py-8">
+        <div class="flex flex-wrap">
+          <div class="w-full md:w-1/2">
+            <div class="my-1">
+              <div
+                class="flex flex-wrap justify-center gap-x-3 md:justify-start"
+              >
+                <a
+                  href="javascript:void(0)"
+                  class="text-body-dark-11 hover:text-body-dark-12"
+                  >Privacy Policy</a
+                >
+                <a
+                  href="javascript:void(0)"
+                  class="text-body-dark-11 hover:text-body-dark-12"
+                  >Legal Notice</a
+                >
+                <a
+                  href="javascript:void(0)"
+                  class="text-body-dark-11 hover:text-body-dark-12"
+                  >Terms of Service</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full md:w-1/2">
+            <div class="my-1 flex justify-center md:justify-end">
+              <p class="text-body-dark-11">
+                &#169; 2024 Inazuma Inc. All rights reserved. Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      type="button"
+      class="inline-flex w-12 h-12 rounded-md items-center justify-center text-lg/none bg-primary text-primary-color hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 focus:bg-primary-light-10 dark:focus:bg-primary-dark-10 fixed bottom-[117px] right-[20px] hover:-translate-y-1 opacity-100 visible z-50 is-hided"
+      data-web-trigger="scroll-top"
+      aria-label="Scroll to top"
+    >
+      <i class="lni lni-chevron-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <script type="module" src="/assets/js/main.js"></script>
+    <script>
+      // Scroll Reveal
+      const sr = ScrollReveal({
+        origin: "bottom",
+        distance: "16px",
+        duration: 1000,
+        reset: false,
+      });
+
+      sr.reveal(`.scroll-revealed`, {
+        cleanup: true,
+      });
+
+      // GLightBox
+      GLightbox({
+        selector: ".video-popup",
+        href: "https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM",
+        type: "video",
+        source: "youtube",
+        width: 900,
+        autoplayVideos: true,
+      });
+
+      const myGallery3 = GLightbox({
+        selector: ".portfolio-box",
+        type: "image",
+        width: 900,
+      });
+
+      // Testimonial
+      const testimonialSwiper = new Swiper(".testimonial-carousel", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1280: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+    </script>
+    <script type="module" src="/assets/js/main.js"></script>
+  </body>
+</html>
