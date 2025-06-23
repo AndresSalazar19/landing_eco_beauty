@@ -922,6 +922,7 @@ p + p{
   border-color: transparent;
 }
 
+
 .ic-navbar.sticky{
   position: fixed;
   z-index: 9999;
@@ -952,8 +953,21 @@ p + p{
   color: rgb(238 238 240 / var(--tw-text-opacity));
 }
 
-.ic-navbar.sticky .ic-navbar-logo #NavbarBrandIcon{
-  fill: #779376;
+
+.ic-navbar .ic-navbar-logo #Hoja{
+  fill: #046801;
+}
+
+.ic-navbar.sticky .ic-navbar-logo #Hoja{
+  fill: #046801;
+}
+
+.ic-navbar.sticky .ic-navbar-logo #Ecobeauty:where([data-web-theme=dark], [data-web-theme=dark] *){
+  fill: white;
+}
+
+.ic-navbar.sticky .ic-navbar-logo #Hoja:where([data-web-theme=dark], [data-web-theme=dark] *){
+  fill: rgb(50, 255, 61);
 }
 
 .ic-navbar.sticky .ic-navbar-toggler{
