@@ -279,14 +279,7 @@ window.addEventListener("popstate", handleRouting);
 
 document.addEventListener("DOMContentLoaded", handleRouting);
 
-document.addEventListener("click", e => {
-  if (e.target.matches("[data-link]")) {
-    e.preventDefault();
-    const view = e.target.getAttribute("href").slice(1);
-    history.pushState(null, "", `/${view}`);
-    loadView(view);
-  }
-});
+
 
 
 
