@@ -264,6 +264,16 @@ async function loadView(view) {
   }
 }
 
+function handleRouting() {
+  const path = location.pathname.slice(1);
+
+  if (!path || path === "index.html") {
+    // No cargar vista dinámica, estamos en index.html real
+    return;
+  }
+
+  loadView(path);
+}
 
 window.addEventListener("popstate", handleRouting);
 
