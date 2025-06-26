@@ -247,3 +247,54 @@ if (st) {
     });
   });
 }
+
+const app = document.getElementById("app");
+
+async function loadView(view) {
+  try {
+    const res = await fetch(`/${view}.html`);
+    const html = await res.text();
+    app.innerHTML = html;
+    initSPAEvents(view); // volver a activar JS si se necesita
+  } catch (err) {
+    app.innerHTML = "<h2>Vista no encontrada</h2>";
+  }
+}
+
+function handleRouting() {
+  const path = location.pathname.slice(1);
+
+  if (!path || path === "index.html") {
+    // No cargar vista dinámica, estamos en index.html real
+    return;
+  }
+
+  loadView(path);
+}
+
+window.addEventListener("popstate", handleRouting);
+
+document.addEventListener("DOMContentLoaded", handleRouting);
+
+document.addEventListener("click", e => {
+  if (e.target.matches("[data-link]")) {
+    e.preventDefault();
+    const view = e.target.getAttribute("href").slice(1);
+    history.pushState(null, "", `/${view}`);
+    loadView(view);
+  }
+});
+
+window.addEventListener("popstate", handleRouting);
+document.addEventListener("DOMContentLoaded", handleRouting);
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches("[data-link]") || e.target.closest("[data-link]")) {
+    e.preventDefault();
+    const target = e.target.closest("[data-link]");
+    const view = target.getAttribute("href").replace("/", "");
+    history.pushState(null, "", `/${view}`);
+    loadView(view);
+  }
+});
+
