@@ -113,12 +113,20 @@ onAuthStateChanged(auth, (user) => {
   const authForms = document.getElementById('auth-forms');
   const sessionInfo = document.getElementById('session-info');
   const startButton = document.getElementById('start-button');
+  const mainStartBtn = document.getElementById('main-start-btn');
 
   if (user) {
     if (userDisplay) {
       const name = user.displayName || user.email;
       userDisplay.textContent = `Bienvenid@ ${name}`;
-      if (startButton) startButton.classList.add('hidden');
+      if (startButton) {
+        startButton.classList.add('hidden');
+        startButton.style.display = 'none';
+      }
+      if (mainStartBtn) {
+        mainStartBtn.classList.add('hidden');
+        mainStartBtn.style.display = 'none';
+      }
       console.log('Usuario autenticado:', user);
       if (logoutBtn) logoutBtn.classList.remove("hidden");
     }
@@ -126,6 +134,14 @@ onAuthStateChanged(auth, (user) => {
     // Ocultar el botón de logout y limpiar el display del usuario
     if (logoutBtn) logoutBtn.classList.add("hidden");
     if (userDisplay) userDisplay.textContent = "";
+    if (startButton) {
+      startButton.classList.remove('hidden');
+      startButton.style.display = '';
+    }
+    if (mainStartBtn) {
+      mainStartBtn.classList.remove('hidden');
+      mainStartBtn.style.display = '';
+    }
   }
 });
 

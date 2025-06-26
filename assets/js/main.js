@@ -293,8 +293,6 @@ function initSPAEvents(view) {
   }
 }
 
-
-
 async function loadView(view) {
   const app = document.getElementById("app");
   if (!app) return;
@@ -308,8 +306,6 @@ async function loadView(view) {
     app.innerHTML = "<h2>Vista no encontrada</h2>";
   }
 }
-
-
 
 function handleRouting() {
   const path = location.pathname.slice(1);
@@ -325,6 +321,40 @@ function handleRouting() {
 window.addEventListener("popstate", handleRouting);
 
 document.addEventListener("DOMContentLoaded", handleRouting);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('modal-hola');
+  const close = document.getElementById('close-modal-hola');
+  const modalTexto = document.getElementById('modal-hola-texto');
+  const modalImg = document.getElementById('modal-hola-img');
+  const icons = document.querySelectorAll('.portfolio-icon a');
+
+  icons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (modal && modalTexto && modalImg) {
+        modalTexto.textContent = icon.getAttribute('data-texto') || 'hola';
+        const imgSrc = icon.getAttribute('data-img');
+        if (imgSrc) {
+          modalImg.src = imgSrc;
+          modalImg.style.display = 'block';
+        } else {
+          modalImg.style.display = 'none';
+        }
+        modal.style.display = 'flex';
+      }
+    });
+  });
+
+  if (close && modal) {
+    close.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  }
+});
 
 
 
