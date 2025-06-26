@@ -80,7 +80,6 @@
       sizes="16x16"
       href="./assets/favicon/favicon-16x16.png"
     />
-    <link rel="manifest" href="/site.webmanifest.json" />
     <link
       rel="mask-icon"
       href="./assets/favicon/safari-pinned-tab.svg"
@@ -262,11 +261,15 @@
 <!-- Botón solo si NO hay sesión -->
 <div id="start-button" class="hidden sm:flex">
   <a
-    href="/login.html"
+    href="/login"
+    data-link
     class="btn-navbar ml-5 px-6 py-3 rounded-md bg-primary-color bg-opacity-20 text-base font-medium text-primary-color hover:bg-opacity-100 hover:text-primary"
     role="button"
-  >Empieza ahora</a>
+  >
+    Empieza ahora
+  </a>
 </div>
+
 
             </div>
           </div>
@@ -274,7 +277,7 @@
       </div>
     </header>
 
-    <main class="main relative">
+    <main id ="app" class="main relative">
       <!-- Hero section -->
       <section
         id="home"
@@ -1646,7 +1649,6 @@
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 
-    <script type="module" src="/assets/js/main.js"></script>
     <script>
       // Scroll Reveal
       const sr = ScrollReveal({

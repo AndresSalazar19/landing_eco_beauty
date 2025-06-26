@@ -1,4 +1,6 @@
 import '/assets/js/firebase.js';
+import { login } from "/assets/js/firebase.js";
+import { register } from "/assets/js/firebase.js";
 
 // Page loading
 var pageLoading = document.querySelector(".page-loading");
@@ -153,7 +155,7 @@ tabs.forEach((tab) => {
     const dataTarget = links[0].dataset.webTarget,
       targetElement = this.document.getElementById(dataTarget);
 
-    targetElement.classList.remove("hide");
+    if (targetElement != null) targetElement.classList.remove("hide");
   });
 
   links.forEach((link) => {
@@ -247,3 +249,85 @@ if (st) {
     });
   });
 }
+
+const app = document.getElementById("app");
+
+function initSPAEvents(view) {
+  if (view === "login") {
+    const form = document.getElementById("login-form");
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      try {
+        const user = await login(email, password);
+        alert("Inicio de sesión exitoso: " + user.email);
+
+        history.pushState({}, "", "/");
+        location.href = "/";
+      } catch (err) {
+        alert("Error al iniciar sesión: " + err.message);
+      }
+    });
+  }
+
+  if (view === "register") {
+    const form = document.getElementById("register-form");
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      try {
+        const newUser = await register(name, email, password);
+        alert("Registro exitoso: " + newUser.email);
+        
+        history.pushState({}, "", "/");
+        location.href = "/";
+      } catch (err) {
+        alert("Error al registrarse: " + err.message);
+      }
+    });
+  }
+}
+
+
+
+async function loadView(view) {
+  const app = document.getElementById("app");
+  if (!app) return;
+
+  try {
+    const res = await fetch(`/views/${view}.html`);
+    const html = await res.text();
+    app.innerHTML = html;
+    initSPAEvents?.(view); // ejecuta eventos si están definidos
+  } catch (err) {
+    app.innerHTML = "<h2>Vista no encontrada</h2>";
+  }
+}
+
+
+
+function handleRouting() {
+  const path = location.pathname.slice(1);
+
+  if (!path || path === "index.html") {
+    // No cargar vista dinámica, estamos en index.html real
+    return;
+  }
+
+  loadView(path);
+}
+
+window.addEventListener("popstate", handleRouting);
+
+document.addEventListener("DOMContentLoaded", handleRouting);
+
+
+
+
+
+
