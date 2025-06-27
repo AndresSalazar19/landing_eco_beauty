@@ -357,7 +357,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+const stars = document.querySelectorAll('#starRating .star');
+  const ratingMessage = document.getElementById('ratingMessage');
 
+  stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      const rating = index + 1;
+      updateStars(rating);
+      ratingMessage.textContent = `Gracias por calificar con ${rating} estrella${rating > 1 ? 's' : ''}!`;
+    });
+  });
+
+  function updateStars(rating) {
+    stars.forEach((star, i) => {
+      star.classList.toggle('text-yellow-400', i < rating);
+      star.classList.toggle('text-gray-300', i >= rating);
+    });
+  }
 
 
 
