@@ -1825,6 +1825,42 @@
     </script>
     <script type="module" src="/assets/js/main.js"></script>
 
+    <!-- Chat Widget JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const chatButton = document.getElementById('chat-button');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+
+        // Abrir chat
+        chatButton.addEventListener('click', function() {
+          chatWindow.classList.add('active');
+          chatButton.style.display = 'none';
+        });
+
+        // Cerrar chat
+        closeChat.addEventListener('click', function() {
+          chatWindow.classList.remove('active');
+          chatButton.style.display = 'flex';
+        });
+
+        // Cerrar chat al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+          if (!chatWindow.contains(event.target) && !chatButton.contains(event.target)) {
+            if (chatWindow.classList.contains('active')) {
+              chatWindow.classList.remove('active');
+              chatButton.style.display = 'flex';
+            }
+          }
+        });
+
+        // Prevenir que se cierre al hacer clic dentro del chat
+        chatWindow.addEventListener('click', function(event) {
+          event.stopPropagation();
+        });
+      });
+    </script>
+
     <!-- Modal para portfolio-icon -->
     <div id="modal-hola" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); justify-content:center; align-items:center;">
       <div style="background:white; padding:2rem 3rem; border-radius:1rem; box-shadow:0 2px 16px rgba(0,0,0,0.2); position:relative; min-width:320px; max-width:400px; min-height:300px; max-height:90vh; display:flex; align-items:center; justify-content:center; overflow:auto;">
@@ -1832,6 +1868,31 @@
         <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
           <img id="modal-hola-img" src="" alt="Producto" style="max-width:320px; width:100%; border-radius:1rem; margin-bottom:1rem; display:none;">
           <p id="modal-hola-texto" style="font-size:1.1rem; color:#222; margin:0; text-align:justify; word-break:break-word; white-space:pre-line; max-width:100%;">hola</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+      <!-- Chat Button -->
+      <button id="chat-button" class="chat-button" aria-label="Abrir chat">
+        <i class="lni lni-comments"></i>
+      </button>
+      
+      <!-- Chat Window -->
+      <div id="chat-window" class="chat-window">
+        <div class="chat-header">
+          <h3>Asistente Virtual</h3>
+          <button id="close-chat" class="close-chat" aria-label="Cerrar chat">
+            <i class="lni lni-close"></i>
+          </button>
+        </div>
+        <div class="chat-messages">
+          <div class="message bot-message">
+            <div class="message-content">
+              <p>¡Bienvenido! Soy el asistente virtual de EcoBeauty ¿en qué te puedo ayudar?</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
