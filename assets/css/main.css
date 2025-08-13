@@ -847,7 +847,7 @@ p + p{
   width: 1rem;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
   animation: grid-loader 1.2s linear infinite;
 }
 
@@ -993,7 +993,7 @@ p + p{
 
   .ic-navbar.sticky .ic-page-scroll:hover{
     --tw-text-opacity: 1;
-    color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
     opacity: 1;
   }
 
@@ -1005,7 +1005,7 @@ p + p{
 
 .ic-page-scroll.active{
   --tw-text-opacity: 1;
-  color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
 }
 
 @media (min-width: 1024px){
@@ -1017,7 +1017,7 @@ p + p{
 
   .ic-navbar.sticky .ic-page-scroll.active{
     --tw-text-opacity: 1;
-    color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
     opacity: 1;
   }
 }
@@ -1034,7 +1034,7 @@ p + p{
 
 .ic-navbar.sticky .btn-navbar{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
 }
 
 .ic-navbar.sticky .btn-navbar:hover{
@@ -1089,7 +1089,7 @@ p + p{
 
 .tabs-nav .tabs-link.active{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1104,7 +1104,7 @@ p + p{
 
 .portfolio-menu button.active{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1157,7 +1157,7 @@ p + p{
 .common-carousel .swiper-button-prev:hover,
   .common-carousel .swiper-button-next:hover{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1165,7 +1165,7 @@ p + p{
 .common-carousel .swiper-button-prev:focus,
   .common-carousel .swiper-button-next:focus{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1751,7 +1751,7 @@ p + p{
 
 .\!bg-primary{
   --tw-bg-opacity: 1 !important;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity)) !important;
+  background-color: #62AD67 !important;
 }
 
 .bg-accent-pink-custom{
@@ -1784,7 +1784,7 @@ p + p{
 
 .bg-primary{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
 }
 
 .bg-primary-color{
@@ -1803,7 +1803,7 @@ p + p{
 }
 
 .bg-primary\/10{
-  background-color: rgb(119 147 118 / 0.1);
+  background-color: #62AD671A;
 }
 
 .bg-red-500{
@@ -2096,7 +2096,7 @@ p + p{
 
 .text-primary{
   --tw-text-opacity: 1;
-  color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
 }
 
 .text-primary-color{
@@ -2151,7 +2151,7 @@ p + p{
 
 .ring-primary{
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(119 147 118 / var(--tw-ring-opacity));
+  --tw-ring-color: #62AD67;
 }
 
 .grayscale{
@@ -2206,7 +2206,7 @@ p + p{
 
 .hover\:bg-primary:hover{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
 }
 
 .hover\:bg-primary-color:hover{
@@ -2230,7 +2230,7 @@ p + p{
 
 .hover\:text-primary:hover{
   --tw-text-opacity: 1;
-  color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
 }
 
 .hover\:text-primary-color:hover{
@@ -2267,7 +2267,7 @@ p + p{
 
 .focus\:border-primary:focus{
   --tw-border-opacity: 1;
-  border-color: rgb(119 147 118 / var(--tw-border-opacity));
+  border-color: #62AD67;
 }
 
 .focus\:bg-green-500:focus{
@@ -2277,7 +2277,7 @@ p + p{
 
 .focus\:bg-primary:focus{
   --tw-bg-opacity: 1;
-  background-color: rgb(119 147 118 / var(--tw-bg-opacity));
+  background-color: #62AD67;
 }
 
 .focus\:bg-primary-color:focus{
@@ -2292,7 +2292,7 @@ p + p{
 
 .focus\:text-primary:focus{
   --tw-text-opacity: 1;
-  color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
 }
 
 .focus\:text-primary-color:focus{
@@ -2340,7 +2340,7 @@ p + p{
 
 .group:hover .group-hover\:text-primary{
   --tw-text-opacity: 1;
-  color: rgb(119 147 118 / var(--tw-text-opacity));
+  color: #62AD67;
 }
 
 .group:hover .group-hover\:opacity-100{
